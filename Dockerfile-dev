@@ -1,0 +1,6 @@
+FROM node:16
+WORKDIR /app
+RUN npm install -g @angular/cli@13.2.3
+EXPOSE 4200
+# CMD ["npm", "start"]
+CMD ["bash"]
