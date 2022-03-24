@@ -8,4 +8,4 @@ services:
       - "4200:4200"
     container_name: angular
     volumes:
-       - ./bookstore22:/app
+       - ./bookstore:/app
