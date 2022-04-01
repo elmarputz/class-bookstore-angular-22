@@ -2,5 +2,13 @@
     <a *ngFor="let book of books" class="item bs-book-list-item" 
       [book]="book" [routerLink]="book.isbn"></a>
 
+     <div *ngIf="books && !books.length" class="ui active dimmer">
+      <div class="ui large text loader">
+        Daten werden geladen!
+      </div>
+     
+     </div> 
+
+    
 
 </div>
