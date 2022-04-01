@@ -3,10 +3,7 @@ import { Book } from './shared/book';
 
 @Component({
   selector: 'bs-root',
-  template: `
-    <bs-book-list (showDetailsEvent)="showDetails($event)" *ngIf="listOn"></bs-book-list>
-    <bs-book-details (showListEvent)="showList()" *ngIf="detailsOn" [book]="book"></bs-book-details>
-    `
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
 
