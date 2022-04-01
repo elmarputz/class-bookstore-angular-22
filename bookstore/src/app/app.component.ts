@@ -5,10 +5,12 @@ import { Book } from './shared/book';
   selector: 'bs-root',
   template: `
     <bs-book-list (showDetailsEvent)="showDetails($event)" *ngIf="listOn"></bs-book-list>
-    <bs-book-details (showListEvent)="showList()" *ngIf="detailsOn"></bs-book-details>
+    <bs-book-details (showListEvent)="showList()" *ngIf="detailsOn" [book]="book"></bs-book-details>
     `
 })
 export class AppComponent {
+
+  book : Book | undefined;
 
   listOn = true;
   detailsOn = false;
@@ -24,7 +26,7 @@ export class AppComponent {
     this.detailsOn = true;
   }
 
-  book : Book | undefined;
+ 
 
   title = 'bookstore';
 }
