@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule
+    BrowserModule, AppRoutingModule, HttpClientModule 
   ],
   providers: [BookStoreService],
   bootstrap: [AppComponent]
