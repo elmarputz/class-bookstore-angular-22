@@ -29,6 +29,10 @@ export class BookStoreService {
     return this.http.delete(`${this.api}/books/${isbn}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  getAllSearch(searchTerm:string) : Observable<Array<Book>> {
+    return this.http.get<Book>(`${this.api}/books/search/${searchTerm}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(() => new Error(error));
   }
