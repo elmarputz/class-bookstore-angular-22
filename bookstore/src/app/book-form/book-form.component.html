@@ -33,9 +33,29 @@
 </div>
 
 <div class="field">
-    <label>Ratung</label>
+    <label>Rating</label>
     <input type="number" formControlName="rating">
     <div *ngIf="errors['rating']" class="ui negative message"> {{ errors['rating'] }}</div>
+</div>
+
+<div class="field">
+    <label>Bilder</label>
+    <div formArrayName="images">
+        <div class="fields" *ngFor="let control of images?.controls; index as i; last as l" 
+            [formGroupName]="i">
+            <input type="hidden" formControlName="id">
+            <div class="nine wide field">
+                <input formControlName="url" placeholder="https://bild{{i+1}}_url">
+            </div>  
+            <div class="six wide field">
+                <input formControlName="title"  placeholder="bild{{i+1}}_title">
+            </div>  
+            <div class="one wide field" *ngIf="l">
+                <button (click)="addThumbnailControl()" class="ui large button" type="button">+</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

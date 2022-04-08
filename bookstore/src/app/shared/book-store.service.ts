@@ -33,6 +33,10 @@ export class BookStoreService {
     return this.http.get<Book>(`${this.api}/books/search/${searchTerm}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  update(book: Book) : Observable<any> {
+    return this.http.put(`${this.api}/books/${book.isbn}`, book).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(() => new Error(error));
   }
