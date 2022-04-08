@@ -1,0 +1,44 @@
+<h1>Buchformular</h1>
+
+<form class="ui large form" [formGroup]="bookForm" (ngSubmit)="submitForm()">
+
+<input type="hidden" formControlName="id">
+
+<div class="field">
+    <label>Buchtitel</label>
+    <input formControlName="title">
+    <div *ngIf="errors['title']" class="ui negative message"> {{ errors['title'] }}</div>
+</div>
+
+<div class="field">
+    <label>Untertitle</label>
+    <input formControlName="subtitle">
+</div>
+
+<div class="field">
+    <label>ISBN-Nummer</label>
+    <input formControlName="isbn">
+    <div *ngIf="errors['isbn']" class="ui negative message"> {{ errors['isbn'] }}</div>
+</div>
+
+<div class="field">
+    <label>Erscheinungsdatum</label>
+    <input type="date" formControlName="published">
+    <div *ngIf="errors['published']" class="ui negative message"> {{ errors['published'] }}</div>
+</div>
+
+<div class="field">
+    <label>Beschreibung</label>
+    <textarea formControlName="description" rows="3"></textarea>
+</div>
+
+<div class="field">
+    <label>Ratung</label>
+    <input type="number" formControlName="rating">
+    <div *ngIf="errors['rating']" class="ui negative message"> {{ errors['rating'] }}</div>
+</div>
+
+
+<button type="submit" class="ui button" [disabled]="bookForm.invalid">Speichern</button>
+
+</form>

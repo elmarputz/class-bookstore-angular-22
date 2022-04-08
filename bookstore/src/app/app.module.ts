@@ -10,6 +10,8 @@ import { BookStoreService } from './shared/book-store.service';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './search/search.component';
+import { BookFormComponent } from './book-form/book-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,11 @@ import { SearchComponent } from './search/search.component';
     BookListItemComponent,
     BookDetailsComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    BookFormComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule 
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule 
   ],
   providers: [BookStoreService],
   bootstrap: [AppComponent]
