@@ -37,6 +37,9 @@ export class BookStoreService {
     return this.http.put(`${this.api}/books/${book.isbn}`, book).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  create(book: Book) : Observable<any> {
+    return this.http.post(`${this.api}/books`, book).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(() => new Error(error));
   }
