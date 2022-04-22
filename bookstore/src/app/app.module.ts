@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './search/search.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './shared/authentication.service';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookDetailsComponent,
     HomeComponent,
     SearchComponent,
-    BookFormComponent
+    BookFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule 
   ],
-  providers: [BookStoreService],
+  providers: [BookStoreService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
