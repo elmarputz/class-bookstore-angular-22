@@ -3,12 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
 
+
+interface Response {
+  access_token: string;
+}
+
 @Component({
   selector: 'bs-login',
   templateUrl: './login.component.html',
   styles: [
   ]
 })
+
+
 export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
@@ -37,18 +44,19 @@ export class LoginComponent implements OnInit {
     if (val.username && val.password) {
       this.authService.login(val.username, val.password).subscribe((
         res: any) => {
-          console.log(res);
-          
+          this.authService.setSessionStorage((res as Response).access_token);
+          this.router.navigateByUrl("/"); 
         });
     }
-
   }
 
 
-  logout() {}
+  logout() {
+    this.authService.logout();
+  }
 
   isLoggedIn () {
-    return false;
+    return this.authService.isLoggedIn();
   }
 
 }
