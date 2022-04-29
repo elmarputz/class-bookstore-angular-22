@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './shared/authentication.service';
 import { TokenInterceptorService } from './shared/token-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptorService } from './shared/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,17 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     LoginComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule 
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, ToastrModule.forRoot()  
   ],
   providers: [BookStoreService, AuthenticationService, 
     { 
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
       multi: true
     }],
   bootstrap: [AppComponent]
