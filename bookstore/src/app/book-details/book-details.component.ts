@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../shared/authentication.service';
 import { Book } from '../shared/book';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
@@ -19,6 +20,7 @@ export class BookDetailsComponent implements OnInit {
     private bs: BookStoreService,
     private route: ActivatedRoute,
     private router: Router, 
+    public authService : AuthenticationService
     ) { }
 
   ngOnInit(): void {
